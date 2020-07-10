@@ -63,3 +63,11 @@ php artisan key:generate
 ```genericsql
 php artisan migrate
 ```
+
+6.修改代码提交：
+```genericsql
+git staus 
+git add -A
+git commit -m '描述'
+git push
+```
