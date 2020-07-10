@@ -21,19 +21,45 @@ lter table `users` add unique `users_email_unique`(`email`))
 ```angular2html
 Schema::defaultStringLength(191);
 ```
-## composer install 安装过程报错，可以尝试删除composer.lock文件
 
-### PHPStorm 自动导入包 `alt + enter`
+### 快捷键使用
+1.PHPStorm 自动导入包 `alt + enter`
 
-### git使用
+### Git使用
 1.创建git仓库
-2.本地初始化
+
+2.本地初始化，并上传代码
 ```genericsql
 git init
-git status #查看下文件
-git add -A #添加到库
-
+git status              # 查看下文件
+git add -A              # 添加到库
+git commit -m "描述内容"
+git remote add origin https://github.com/lyne007/laravel6.git  # 添加远程仓库
+git push -u origin master                                      # push 代码到仓库
 
 ```
-3.33
+3.客户端拉取数据
+```genericsql
+git clone https://github.com/lyne007/laravel6.git 项目名
+```
+4.客户端缺少vendor目录，需在项目根执行命令
+```genericsql
+composer install
+```
+如果 `composer install` 安装过程报错，可以尝试删除 `composer.lock` 文件
 
+安装完成后，Laravel 中缺少 `.env` 文件，请将 `.env.example` 文件改为 `.env` 即可
+
+再运行项目发现报错：
+```genericsql
+RuntimeException
+No application encryption key has been specified. 
+```
+原因 `.env` 文件中 `APP_KEY` 是空，执行下面代码解决
+```genericsql
+php artisan key:generate
+```
+5.迁移数据库
+```genericsql
+php artisan migrate
+```
